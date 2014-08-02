@@ -45,6 +45,16 @@ powerpc_quanta_ly2_r0_config_settings_t powerpc_quanta_ly2_r0_config_settings[] 
 #else
 { POWERPC_QUANTA_LY2_R0_CONFIG_INCLUDE_UCLI(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
 #endif
+#ifdef POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD
+    { __powerpc_quanta_ly2_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD), __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD) },
+#else
+{ POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
+#endif
+#ifdef POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX
+    { __powerpc_quanta_ly2_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX), __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX) },
+#else
+{ POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
+#endif
     { NULL, NULL }
 };
 #undef __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE
