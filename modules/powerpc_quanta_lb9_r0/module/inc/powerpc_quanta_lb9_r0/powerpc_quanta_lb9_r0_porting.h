@@ -20,26 +20,6 @@
 #include <memory.h>
 #endif
 
-#ifndef POWERPC_QUANTA_LB9_R0_MALLOC
-    #if defined(GLOBAL_MALLOC)
-        #define POWERPC_QUANTA_LB9_R0_MALLOC GLOBAL_MALLOC
-    #elif POWERPC_QUANTA_LB9_R0_CONFIG_PORTING_STDLIB == 1
-        #define POWERPC_QUANTA_LB9_R0_MALLOC malloc
-    #else
-        #error The macro POWERPC_QUANTA_LB9_R0_MALLOC is required but cannot be defined.
-    #endif
-#endif
-
-#ifndef POWERPC_QUANTA_LB9_R0_FREE
-    #if defined(GLOBAL_FREE)
-        #define POWERPC_QUANTA_LB9_R0_FREE GLOBAL_FREE
-    #elif POWERPC_QUANTA_LB9_R0_CONFIG_PORTING_STDLIB == 1
-        #define POWERPC_QUANTA_LB9_R0_FREE free
-    #else
-        #error The macro POWERPC_QUANTA_LB9_R0_FREE is required but cannot be defined.
-    #endif
-#endif
-
 #ifndef POWERPC_QUANTA_LB9_R0_MEMSET
     #if defined(GLOBAL_MEMSET)
         #define POWERPC_QUANTA_LB9_R0_MEMSET GLOBAL_MEMSET

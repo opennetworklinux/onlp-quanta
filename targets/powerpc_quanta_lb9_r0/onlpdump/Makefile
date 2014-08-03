@@ -34,7 +34,7 @@ LIBRARY := onlpdumpmain
 $(LIBRARY)_SUBDIR := $(dir $(lastword $(MAKEFILE_LIST)))
 include $(BUILDER)/lib.mk
 
-DEPENDMODULES := AIM IOF onlp powerpc_quanta_lb9_r0 onlplib onlp_platform_defaults sff cjson cjson_util timer_wheel OS
+DEPENDMODULES := AIM IOF onlp powerpc_quanta_lb9_r0 onlplib onlp_platform_defaults sff cjson cjson_util timer_wheel OS quanta_sys_eeprom
 
 include $(BUILDER)/dependmodules.mk
 
