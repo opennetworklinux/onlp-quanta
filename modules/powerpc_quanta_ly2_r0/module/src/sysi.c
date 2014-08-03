@@ -28,8 +28,9 @@ onlp_sysi_oids_get(onlp_oid_t* table, int max)
     onlp_oid_t* e = table;
     memset(table, 0, max*sizeof(onlp_oid_t));
 
+
     /*
-     * 5 thermal sensors
+     * 5 Chassis Thermal Sensors
      */
     *e++ = THERMAL_OID_THERMAL1;
     *e++ = THERMAL_OID_THERMAL2;

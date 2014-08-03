@@ -54,14 +54,14 @@ sys_thermal_info_get__(onlp_thermal_info_t* info, int id)
 }
 
 static int
-psu_thermal_info_get__(onlp_thermal_info_t* info, int id)
+psu_thermal_info_get__(onlp_thermal_info_t* info, int pid, int id)
 {
     /* THERMAL6 -> PSU1 */
     /* THERMAL7 -> PSU2 */
     extern char* psu_paths[];
-    char* dir = psu_paths[id-5];
+    char* dir = psu_paths[pid];
     info->status |= 1;
-    return onlp_file_read_int(&info->mcelsius, "%s/temp1_input", dir);
+    return onlp_file_read_int(&info->mcelsius, "%s/temp%d_input", dir, id);
 }
 
 int
@@ -91,9 +91,18 @@ onlp_thermali_info_get(onlp_oid_t id, onlp_thermal_info_t* rv)
         case THERMAL_ID_THERMAL4:
         case THERMAL_ID_THERMAL5:
             return sys_thermal_info_get__(rv, tid);
+
         case THERMAL_ID_THERMAL6:
         case THERMAL_ID_THERMAL7:
-            return psu_thermal_info_get__(rv, tid);
+        case THERMAL_ID_THERMAL8:
+            return psu_thermal_info_get__(rv, 1, tid-5);
+
+
+        case THERMAL_ID_THERMAL9:
+        case THERMAL_ID_THERMAL10:
+        case THERMAL_ID_THERMAL11:
+            return psu_thermal_info_get__(rv, 2, tid-8);
+
         }
 
     return ONLP_STATUS_E_INVALID;

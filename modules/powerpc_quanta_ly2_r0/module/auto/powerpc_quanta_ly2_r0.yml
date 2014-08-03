@@ -78,6 +78,10 @@ definitions:
         - THERMAL5 : 5
         - THERMAL6 : 6
         - THERMAL7 : 7
+        - THERMAL8 : 8
+        - THERMAL9 : 9
+        - THERMAL10 : 10
+        - THERMAL11 : 11
 
 
     thermal_oid:
@@ -89,7 +93,10 @@ definitions:
         - THERMAL5 : ONLP_THERMAL_ID_CREATE(5)
         - THERMAL6 : ONLP_THERMAL_ID_CREATE(6)
         - THERMAL7 : ONLP_THERMAL_ID_CREATE(7)
-
+        - THERMAL8 : ONLP_THERMAL_ID_CREATE(8)
+        - THERMAL9 : ONLP_THERMAL_ID_CREATE(9)
+        - THERMAL10 : ONLP_THERMAL_ID_CREATE(10)
+        - THERMAL11 : ONLP_THERMAL_ID_CREATE(11)
 
 
   portingmacro:

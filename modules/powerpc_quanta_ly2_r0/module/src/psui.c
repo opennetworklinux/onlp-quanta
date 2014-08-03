@@ -20,8 +20,32 @@ onlp_psui_init(void)
 
 static onlp_psu_info_t psus__[] = {
     { }, /* Not used */
-    { { PSU_OID_PSU1,  "PSU-1", 0, { FAN_OID_FAN5, THERMAL_OID_THERMAL5 },} },
-    { { PSU_OID_PSU2,  "PSU-2", 0, { FAN_OID_FAN6, THERMAL_OID_THERMAL6 },} },
+    {
+        {
+            PSU_OID_PSU1,
+            "PSU-1",
+            0,
+            {
+                FAN_OID_FAN5,
+                THERMAL_OID_THERMAL6,
+                THERMAL_OID_THERMAL7,
+                THERMAL_OID_THERMAL8,
+            },
+        }
+    },
+    {
+        {
+            PSU_OID_PSU2,
+            "PSU-2",
+            0,
+            {
+                FAN_OID_FAN6,
+                THERMAL_OID_THERMAL9,
+                THERMAL_OID_THERMAL10,
+                THERMAL_OID_THERMAL11,
+            },
+        }
+    },
 };
 
 char* psu_paths[] = {
