@@ -9,6 +9,7 @@
 #include <onlp/platformi/sysi.h>
 #include "powerpc_quanta_ly2_r0_int.h"
 #include "powerpc_quanta_ly2_r0_log.h"
+#include <quanta_sys_eeprom/eeprom.h>
 
 const char*
 onlp_sysi_platform_get(void)
@@ -20,6 +21,21 @@ int
 onlp_sysi_init(void)
 {
     return ONLP_STATUS_OK;
+}
+
+#define QUANTA_SYS_EEPROM_PATH \
+"/sys/devices/soc.0/ffe03000.i2c/i2c-0/i2c-2/2-0054/eeprom"
+
+int
+onlp_sysi_onie_info_get(onlp_onie_info_t* onie)
+{
+    int rv;
+    quanta_sys_eeprom_t e;
+    rv = quanta_sys_eeprom_parse_file(QUANTA_SYS_EEPROM_PATH, &e);
+    if(rv >= 0) {
+        quanta_sys_eeprom_to_onie(&e, onie);
+    }
+    return rv;
 }
 
 int
