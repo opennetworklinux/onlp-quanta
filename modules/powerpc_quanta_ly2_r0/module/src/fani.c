@@ -62,7 +62,12 @@ sys_fan_info_get__(onlp_fan_info_t* info, int id)
      * Calculate percentage based on current speed and the maximum.
      */
     info->caps |= ONLP_FAN_CAPS_GET_PERCENTAGE;
-    info->percentage = info->rpm * 100 / POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX;
+    if(info->status & ONLP_FAN_STATUS_F2B) {
+        info->percentage = info->rpm * 100 / POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX;
+    }
+    if(info->status & ONLP_FAN_STATUS_B2F) {
+        info->percentage = info->rpm * 100 / POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX;
+    }
     return 0;
 }
 
@@ -129,7 +134,13 @@ onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv)
         case FAN_ID_FAN3:
         case FAN_ID_FAN4:
             {
-                return sys_fan_info_get__(rv, fid);
+                if(rv->status & ONLP_FAN_STATUS_F2B) {
+                    return sys_fan_info_get__(rv, fid);
+                }
+                if(rv->status & ONLP_FAN_STATUS_B2F) {
+                    return sys_fan_info_get__(rv, fid+4);
+                }
+                return ONLP_STATUS_E_INTERNAL;
             }
 
         case FAN_ID_FAN5:

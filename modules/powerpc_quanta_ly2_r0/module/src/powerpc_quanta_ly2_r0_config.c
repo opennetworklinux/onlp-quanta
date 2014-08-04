@@ -50,10 +50,15 @@ powerpc_quanta_ly2_r0_config_settings_t powerpc_quanta_ly2_r0_config_settings[] 
 #else
 { POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
 #endif
-#ifdef POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX
-    { __powerpc_quanta_ly2_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX), __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX) },
+#ifdef POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX
+    { __powerpc_quanta_ly2_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX), __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX) },
 #else
-{ POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
+{ POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
+#endif
+#ifdef POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX
+    { __powerpc_quanta_ly2_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX), __powerpc_quanta_ly2_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX) },
+#else
+{ POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX(__powerpc_quanta_ly2_r0_config_STRINGIFY_NAME), "__undefined__" },
 #endif
     { NULL, NULL }
 };

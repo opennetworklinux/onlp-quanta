@@ -29,9 +29,12 @@ cdefs: &cdefs
 - POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD:
     doc: "RPM Threshold at which the fan is considered to have failed."
     default: 100
-- POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_RPM_MAX:
-    doc: "Maximum system fan speed."
+- POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_F2B_RPM_MAX:
+    doc: "Maximum system front-to-back fan speed."
     default: 13000
+- POWERPC_QUANTA_LY2_R0_CONFIG_SYSFAN_B2F_RPM_MAX:
+    doc: "Maximum system back-to-front fan speed."
+    default: 24000
 
 definitions:
   cdefs:
