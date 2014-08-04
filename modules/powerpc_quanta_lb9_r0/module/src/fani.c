@@ -41,7 +41,12 @@ static int
 sys_fan_info_get__(onlp_fan_info_t* info, int id)
 {
     int rv;
-    const char* controller = powerpc_quanta_lb9_r0_system_hwmon_dir();
+    const char* controller = powerpc_quanta_lb9_r0_system_fan_dir();
+
+    if(controller == NULL) {
+        /* Error already reported. */
+        return ONLP_STATUS_E_INTERNAL;
+    }
 
     rv = onlp_file_read_int(&info->rpm,
                             "%s/fan%d_input", controller, id);
@@ -63,7 +68,13 @@ sys_fan_info_get__(onlp_fan_info_t* info, int id)
      * Calculate percentage based on current speed and the maximum.
      */
     info->caps |= ONLP_FAN_CAPS_GET_PERCENTAGE;
-    info->percentage = info->rpm * 100 / POWERPC_QUANTA_LB9_R0_CONFIG_SYSFAN_RPM_MAX;
+    if(info->status & ONLP_FAN_STATUS_F2B) {
+        info->percentage = info->rpm * 100 / POWERPC_QUANTA_LB9_R0_CONFIG_SYSFAN_RPM_F2B_MAX;
+    }
+    if(info->status & ONLP_FAN_STATUS_B2F) {
+        info->percentage = info->rpm * 100 / POWERPC_QUANTA_LB9_R0_CONFIG_SYSFAN_RPM_B2F_MAX;
+    }
+
     return 0;
 }
 
@@ -73,6 +84,12 @@ psu_fan_info_get__(onlp_fan_info_t* info, int id)
     /* FAN5 -> PSU1 */
     /* FAN6 -> PSU2 */
     const char* dir =  powerpc_quanta_lb8_r9_system_psu_dir(id-4);
+
+    if(dir == NULL) {
+        /* Error already reported */
+        return ONLP_STATUS_E_INTERNAL;
+    }
+
     return onlp_file_read_int(&info->rpm, "%s/fan1_input", dir);
 }
 
@@ -101,13 +118,13 @@ onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv)
 
     if(direction == 0) {
         rv->status |= ONLP_FAN_STATUS_F2B;
+        rv->caps |= ONLP_FAN_CAPS_F2B;
     }
     else {
         rv->status |= ONLP_FAN_STATUS_B2F;
+        rv->caps |= ONLP_FAN_CAPS_B2F;
     }
 
-    /* The system fans are reversible. */
-    rv->caps |= ONLP_FAN_CAPS_B2F + ONLP_FAN_CAPS_F2B;
 
     switch(fid)
         {

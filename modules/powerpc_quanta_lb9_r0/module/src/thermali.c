@@ -37,7 +37,9 @@ static int
 sys_thermal_info_get__(onlp_thermal_info_t* info, int id)
 {
     int rv;
-    const char* controller = powerpc_quanta_lb9_r0_system_hwmon_dir();
+
+    /* Fixed for both F2B and B2F configurations */
+    const char* controller = SYS_CONTROLLER_PREFIX_TEMPERATURE;
 
     rv = onlp_file_read_int(&info->mcelsius,
                             "%s//temp%d_input", controller, id);

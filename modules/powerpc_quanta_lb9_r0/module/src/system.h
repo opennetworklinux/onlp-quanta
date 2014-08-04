@@ -11,7 +11,7 @@
 
 int powerpc_quanta_lb9_r0_system_airflow_get(void);
 
-char* powerpc_quanta_lb9_r0_system_hwmon_dir(void);
+char* powerpc_quanta_lb9_r0_system_fan_dir(void);
 
 char* powerpc_quanta_lb8_r9_system_psu_dir(int pid);
 

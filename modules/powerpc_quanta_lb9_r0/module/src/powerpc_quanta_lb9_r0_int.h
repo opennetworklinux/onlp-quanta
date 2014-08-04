@@ -208,13 +208,16 @@ extern aim_map_si_t fan_oid_desc_map[];
  * These are mutually exclusive at any given time.
  */
 
-/* This is the fan and temperature controller in F2B mode */
+/* This is the fan controller in F2B mode */
 #define SYS_CONTROLLER_PREFIX_F2B                                       \
     "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-5/5-002c"
 
-/* This is the fan and temperature controller in B2F mode */
+/* This is the fan controller in B2F mode */
 #define SYS_CONTROLLER_PREFIX_B2F                                       \
     "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-6/6-002f"
+
+/* The temperature controller for both modes */
+#define SYS_CONTROLLER_PREFIX_TEMPERATURE SYS_CONTROLLER_PREFIX_F2B
 
 /*
  * PSU1 and PSU2 sys paths
