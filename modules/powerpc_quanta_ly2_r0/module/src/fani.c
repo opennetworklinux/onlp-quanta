@@ -105,18 +105,22 @@ onlp_fani_info_get(onlp_oid_t id, onlp_fan_info_t* rv)
     /* Read the current airflow direction */
     onlp_file_read((uint8_t*)direction, sizeof(direction), &len,
                    SYS_HWMON_PREFIX "/fan_dir");
-    if(!strcmp(direction, "normal\n")) {
+
+#define FAN_DIR_F2B "front-to-back"
+#define FAN_DIR_B2F "back-to-front"
+
+    if(!strncmp(direction, FAN_DIR_F2B, strlen(FAN_DIR_F2B))) {
         rv->status |= ONLP_FAN_STATUS_F2B;
+        rv->caps |= ONLP_FAN_CAPS_F2B;
     }
-    else if(!strcmp(direction, "reverse\n")) {
+    else if(!strncmp(direction, FAN_DIR_B2F, strlen(FAN_DIR_B2F))) {
         rv->status |= ONLP_FAN_STATUS_B2F;
+        rv->caps |= ONLP_FAN_CAPS_B2F;
     }
     else {
         AIM_LOG_WARN("Invalid fan direction: '%s'", direction);
     }
 
-    /* The system fans are reversible. */
-    rv->caps |= ONLP_FAN_CAPS_B2F + ONLP_FAN_CAPS_F2B;
 
     switch(fid)
         {
