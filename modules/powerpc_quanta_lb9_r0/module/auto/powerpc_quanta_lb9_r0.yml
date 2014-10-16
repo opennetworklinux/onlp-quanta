@@ -35,6 +35,9 @@ cdefs: &cdefs
 - POWERPC_QUANTA_LB9_R0_CONFIG_SYSFAN_RPM_B2F_MAX:
     doc: "Maximum system fan speed in back-to-front mode."
     default: 24000
+- POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS:
+    doc: "Time to hold Phy GPIO in reset, in ms"
+    default: 100
 
 definitions:
   cdefs:

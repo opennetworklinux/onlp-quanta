@@ -60,6 +60,11 @@ powerpc_quanta_lb9_r0_config_settings_t powerpc_quanta_lb9_r0_config_settings[] 
 #else
 { POWERPC_QUANTA_LB9_R0_CONFIG_SYSFAN_RPM_B2F_MAX(__powerpc_quanta_lb9_r0_config_STRINGIFY_NAME), "__undefined__" },
 #endif
+#ifdef POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS
+    { __powerpc_quanta_lb9_r0_config_STRINGIFY_NAME(POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS), __powerpc_quanta_lb9_r0_config_STRINGIFY_VALUE(POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS) },
+#else
+{ POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS(__powerpc_quanta_lb9_r0_config_STRINGIFY_NAME), "__undefined__" },
+#endif
     { NULL, NULL }
 };
 #undef __powerpc_quanta_lb9_r0_config_STRINGIFY_VALUE
