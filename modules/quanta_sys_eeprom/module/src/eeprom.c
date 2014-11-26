@@ -137,7 +137,6 @@ quanta_sys_eeprom_to_onie(const quanta_sys_eeprom_t* src,
     dst->mac_range = 1;
     dst->manufacturer = aim_strdup("Quanta");
     dst->vendor = aim_strdup("QuantaMesh");
-    dst->platform_name = aim_strdup("powerpc-quanta-ly2-r0");
     return 0;
 }
 

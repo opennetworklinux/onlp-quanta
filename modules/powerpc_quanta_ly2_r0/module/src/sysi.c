@@ -34,6 +34,7 @@ onlp_sysi_onie_info_get(onlp_onie_info_t* onie)
     rv = quanta_sys_eeprom_parse_file(QUANTA_SYS_EEPROM_PATH, &e);
     if(rv >= 0) {
         quanta_sys_eeprom_to_onie(&e, onie);
+        onie->platform_name = aim_strdup("powerpc-quanta-ly2-r0");
     }
     return rv;
 }
