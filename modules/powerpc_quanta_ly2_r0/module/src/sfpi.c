@@ -108,11 +108,11 @@ int
 onlp_sfpi_bitmap_get(onlp_sfp_bitmap_t* bmap)
 {
     int p;
-    AIM_BITMAP_INIT(bmap, 64);
-    AIM_BITMAP_CLR_ALL(bmap);
+
     for(p = 0; p < 52; p++) {
         AIM_BITMAP_SET(bmap, p);
     }
+
     return ONLP_STATUS_OK;
 }
 
