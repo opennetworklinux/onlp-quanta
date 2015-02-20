@@ -31,6 +31,7 @@
 #include <powerpc_quanta_lb9_r0/powerpc_quanta_lb9_r0_config.h>
 #include <onlp/platformi/sfpi.h>
 #include <onlplib/sfp.h>
+#include <onlplib/gpio.h>
 #include "powerpc_quanta_lb9_r0_log.h"
 
 
@@ -44,6 +45,8 @@
  */
 typedef struct sfpmap_s {
     int sport;
+    int mod_abs_gpio_number;
+    int reset_gpio_number;
     const char*  mod_abs_gpio;
     const char* reset_gpio;
     const char* eeprom;
@@ -51,10 +54,34 @@ typedef struct sfpmap_s {
 
 static sfpmap_t sfpmap__[] =
     {
-        { 48, "/sys/class/gpio/gpio112/value", "/sys/class/gpio/gpio120/value", "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-1/1-0050/eeprom" },
-        { 49, "/sys/class/gpio/gpio113/value", "/sys/class/gpio/gpio121/value", "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-2/2-0050/eeprom" },
-        { 50, "/sys/class/gpio/gpio114/value", "/sys/class/gpio/gpio122/value", "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-3/3-0050/eeprom" },
-        { 51, "/sys/class/gpio/gpio115/value", "/sys/class/gpio/gpio123/value", "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-4/4-0050/eeprom" },
+        {
+            48,
+            112, 120,
+            "/sys/class/gpio/gpio112/value",
+            "/sys/class/gpio/gpio120/value",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-1/1-0050/eeprom"
+        },
+        {
+            49,
+            113, 121,
+            "/sys/class/gpio/gpio113/value",
+            "/sys/class/gpio/gpio121/value",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-2/2-0050/eeprom"
+        },
+        {
+            50,
+            114, 122,
+            "/sys/class/gpio/gpio114/value",
+            "/sys/class/gpio/gpio122/value",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-3/3-0050/eeprom"
+        },
+        {
+            51,
+            115, 123,
+            "/sys/class/gpio/gpio115/value",
+            "/sys/class/gpio/gpio123/value",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-4/4-0050/eeprom"
+        },
     };
 
 #define SFP_GET(_port) (sfpmap__+ (_port - 48))
@@ -62,6 +89,24 @@ static sfpmap_t sfpmap__[] =
 int
 onlp_sfpi_init(void)
 {
+    /**
+     * Initialize the SFP presence and reset GPIOS.
+     */
+    int i;
+    int rv;
+    for(i = 0; i < AIM_ARRAYSIZE(sfpmap__); i++) {
+        if( (rv = onlp_gpio_export(sfpmap__[i].mod_abs_gpio_number, ONLP_GPIO_DIRECTION_OUT)) < 0) {
+            AIM_LOG_ERROR("Failed to initialize MOD_ABS gpio %d",
+                          sfpmap__[i].mod_abs_gpio_number);
+            return -1;
+        }
+        if( (rv = onlp_gpio_export(sfpmap__[i].reset_gpio_number, ONLP_GPIO_DIRECTION_OUT)) < 0) {
+            AIM_LOG_ERROR("Failed to initialize RESET gpio %d",
+                          sfpmap__[i].reset_gpio_number);
+            return -1;
+        }
+    }
+
     return ONLP_STATUS_OK;
 }
 
