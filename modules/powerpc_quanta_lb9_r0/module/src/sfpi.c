@@ -95,7 +95,7 @@ onlp_sfpi_init(void)
     int i;
     int rv;
     for(i = 0; i < AIM_ARRAYSIZE(sfpmap__); i++) {
-        if( (rv = onlp_gpio_export(sfpmap__[i].mod_abs_gpio_number, ONLP_GPIO_DIRECTION_OUT)) < 0) {
+        if( (rv = onlp_gpio_export(sfpmap__[i].mod_abs_gpio_number, ONLP_GPIO_DIRECTION_IN)) < 0) {
             AIM_LOG_ERROR("Failed to initialize MOD_ABS gpio %d",
                           sfpmap__[i].mod_abs_gpio_number);
             return -1;
