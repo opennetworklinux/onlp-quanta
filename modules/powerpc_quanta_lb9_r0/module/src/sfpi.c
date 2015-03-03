@@ -100,7 +100,7 @@ onlp_sfpi_init(void)
                           sfpmap__[i].mod_abs_gpio_number);
             return -1;
         }
-        if( (rv = onlp_gpio_export(sfpmap__[i].reset_gpio_number, ONLP_GPIO_DIRECTION_OUT)) < 0) {
+        if( (rv = onlp_gpio_export(sfpmap__[i].reset_gpio_number, ONLP_GPIO_DIRECTION_HIGH)) < 0) {
             AIM_LOG_ERROR("Failed to initialize RESET gpio %d",
                           sfpmap__[i].reset_gpio_number);
             return -1;
