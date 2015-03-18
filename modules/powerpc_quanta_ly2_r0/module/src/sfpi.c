@@ -168,18 +168,3 @@ onlp_sfpi_dom_read(int port, uint8_t data[256])
     return onlplib_sfp_eeprom_read_file(sfp->dom, data);
 }
 
-int
-onlp_sfpi_reset(int port)
-{
-    sfpmap_t* sfp = SFP_GET(port);
-    if(sfp->reset_gpio) {
-        return onlplib_sfp_reset_file(sfp->reset_gpio,
-                                      "0\n",
-                                      POWERPC_QUANTA_LY2_R0_CONFIG_PHY_RESET_DELAY_MS,
-                                      "1\n");
-    }
-    else {
-        return ONLP_STATUS_E_UNSUPPORTED;
-    }
-}
-

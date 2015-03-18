@@ -138,13 +138,3 @@ onlp_sfpi_eeprom_read(int port, uint8_t data[256])
     return onlplib_sfp_eeprom_read_file(sfp->eeprom, data);
 }
 
-int
-onlp_sfpi_reset(int port)
-{
-    sfpmap_t* sfp = SFP_GET(port);
-    return onlplib_sfp_reset_file(sfp->reset_gpio,
-                                  "0\n",
-                                  POWERPC_QUANTA_LB9_R0_CONFIG_PHY_RESET_DELAY_MS,
-                                  "1\n");
-}
-
