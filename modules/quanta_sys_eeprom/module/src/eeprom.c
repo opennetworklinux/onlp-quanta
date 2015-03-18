@@ -128,6 +128,7 @@ quanta_sys_eeprom_to_onie(const quanta_sys_eeprom_t* src,
     }
 
     memset(dst, 0, sizeof(*dst));
+    list_init(&dst->vx_list);
     dst->product_name = aim_strdup(src->product_name);
     dst->part_number = aim_strdup(src->part_number);
     dst->serial_number = aim_strdup(src->serial_number);
