@@ -92,10 +92,10 @@ static sfpmap_t sfpmap__[] =
         { 46, "/sys/class/gpio/gpio133/value", NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-59/59-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-59/59-0051/eeprom" },
         { 47, "/sys/class/gpio/gpio134/value", NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-60/60-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-60/60-0051/eeprom" },
         { 48, "/sys/class/gpio/gpio135/value", NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-61/61-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-61/61-0051/eeprom" },
-        { 49,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-10/10-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-10/10-0051/eeprom" },
-        { 50,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-11/11-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-11/11-0051/eeprom" },
-        { 51,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-12/12-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-12/12-0051/eeprom" },
-        { 52,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-13/13-0050/eeprom", "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-13/13-0051/eeprom" },
+        { 49,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-10/10-0050/eeprom", NULL },
+        { 50,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-11/11-0050/eeprom", NULL },
+        { 51,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-12/12-0050/eeprom", NULL },
+        { 52,  NULL, NULL, "/sys/devices/soc.0/ffe03100.i2c/i2c-1/i2c-13/13-0050/eeprom", NULL },
   };
 
 
