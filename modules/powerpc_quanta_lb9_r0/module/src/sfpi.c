@@ -50,6 +50,7 @@ typedef struct sfpmap_s {
     const char*  mod_abs_gpio;
     const char* reset_gpio;
     const char* eeprom;
+    const char* dom;
 } sfpmap_t;
 
 static sfpmap_t sfpmap__[] =
@@ -59,28 +60,32 @@ static sfpmap_t sfpmap__[] =
             112, 120,
             "/sys/class/gpio/gpio112/value",
             "/sys/class/gpio/gpio120/value",
-            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-1/1-0050/eeprom"
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-1/1-0050/eeprom",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-1/1-0051/eeprom"
         },
         {
             49,
             113, 121,
             "/sys/class/gpio/gpio113/value",
             "/sys/class/gpio/gpio121/value",
-            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-2/2-0050/eeprom"
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-2/2-0050/eeprom",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-2/2-0051/eeprom"
         },
         {
             50,
             114, 122,
             "/sys/class/gpio/gpio114/value",
             "/sys/class/gpio/gpio122/value",
-            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-3/3-0050/eeprom"
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-3/3-0050/eeprom",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-3/3-0051/eeprom"
         },
         {
             51,
             115, 123,
             "/sys/class/gpio/gpio115/value",
             "/sys/class/gpio/gpio123/value",
-            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-4/4-0050/eeprom"
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-4/4-0050/eeprom",
+            "/sys/devices/e0000000.soc8541/e0003000.i2c/i2c-0/i2c-4/4-0051/eeprom"
         },
     };
 
@@ -138,3 +143,9 @@ onlp_sfpi_eeprom_read(int port, uint8_t data[256])
     return onlplib_sfp_eeprom_read_file(sfp->eeprom, data);
 }
 
+int
+onlp_sfpi_dom_read(int port, uint8_t data[256])
+{
+    sfpmap_t* sfp = SFP_GET(port);
+    return onlplib_sfp_eeprom_read_file(sfp->dom, data);
+}
