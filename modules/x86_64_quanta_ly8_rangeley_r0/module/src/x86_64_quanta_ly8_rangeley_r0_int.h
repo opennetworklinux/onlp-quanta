@@ -154,14 +154,6 @@ extern aim_map_si_t fan_id_map[];
 /** fan_id_desc_map table. */
 extern aim_map_si_t fan_id_desc_map[];
 
-/* psu info table */
-struct psu_info_s {
-	char path[PATH_MAX];
-	int present;
-	int busno;
-	int addr;
-};
-
 /** psu_id */
 typedef enum psu_id_e {
     PSU_ID_PSU1 = 1,
@@ -224,6 +216,14 @@ extern aim_map_si_t fan_oid_map[];
 /** fan_oid_desc_map table. */
 extern aim_map_si_t fan_oid_desc_map[];
 /* <auto.end.enum(ALL).header> */
+
+/* psu info table */
+struct psu_info_s {
+	char path[PATH_MAX];
+	int present;
+	int busno;
+	int addr;
+};
 
 
 #define SYS_HWMON_PREFIX "/sys/devices/pci0000:00/0000:00:1f.3/i2c-0/0-004e"

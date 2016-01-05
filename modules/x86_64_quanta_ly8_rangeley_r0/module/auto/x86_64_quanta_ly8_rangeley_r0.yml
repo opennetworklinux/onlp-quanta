@@ -28,13 +28,13 @@ cdefs: &cdefs
     default: 0
 - X86_64_QUANTA_LY8_RANGELEY_R0_CONFIG_SYSFAN_RPM_FAILURE_THRESHOLD:
     doc: "RPM Threshold at which the fan is considered to have failed."
-    default: 100
+    default: 3000
 - X86_64_QUANTA_LY8_RANGELEY_R0_CONFIG_SYSFAN_F2B_RPM_MAX:
     doc: "Maximum system front-to-back fan speed."
-    default: 13000
+    default: 18000
 - X86_64_QUANTA_LY8_RANGELEY_R0_CONFIG_SYSFAN_B2F_RPM_MAX:
     doc: "Maximum system back-to-front fan speed."
-    default: 24000
+    default: 18000
 - X86_64_QUANTA_LY8_RANGELEY_R0_CONFIG_PHY_RESET_DELAY_MS:
     doc: "Time to hold Phy GPIO in reset, in ms"
     default: 100
@@ -55,6 +55,10 @@ definitions:
         - FAN4 : 4
         - FAN5 : 5
         - FAN6 : 6
+        - FAN7 : 7
+        - FAN8 : 8
+        - FAN9 : 9
+        - FAN10 : 10
 
     fan_oid:
       members:
@@ -64,6 +68,10 @@ definitions:
         - FAN4 : ONLP_FAN_ID_CREATE(4)
         - FAN5 : ONLP_FAN_ID_CREATE(5)
         - FAN6 : ONLP_FAN_ID_CREATE(6)
+        - FAN7 : ONLP_FAN_ID_CREATE(7)
+        - FAN8 : ONLP_FAN_ID_CREATE(8)
+        - FAN9 : ONLP_FAN_ID_CREATE(9)
+        - FAN10 : ONLP_FAN_ID_CREATE(10)
 
     psu_id:
       members:
@@ -88,6 +96,11 @@ definitions:
         - THERMAL9 : 9
         - THERMAL10 : 10
         - THERMAL11 : 11
+        - THERMAL12 : 12
+        - THERMAL13 : 13
+        - THERMAL14 : 14
+        - THERMAL15 : 15
+        - THERMAL16 : 16
 
 
     thermal_oid:
@@ -103,6 +116,11 @@ definitions:
         - THERMAL9 : ONLP_THERMAL_ID_CREATE(9)
         - THERMAL10 : ONLP_THERMAL_ID_CREATE(10)
         - THERMAL11 : ONLP_THERMAL_ID_CREATE(11)
+        - THERMAL12 : ONLP_THERMAL_ID_CREATE(12)
+        - THERMAL13 : ONLP_THERMAL_ID_CREATE(13)
+        - THERMAL14 : ONLP_THERMAL_ID_CREATE(14)
+        - THERMAL15 : ONLP_THERMAL_ID_CREATE(15)
+        - THERMAL16 : ONLP_THERMAL_ID_CREATE(16)
 
 
   portingmacro:
